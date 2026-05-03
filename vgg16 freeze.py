@@ -5,11 +5,11 @@ from tensorflow.keras import layers, models
 # Load pretrained VGG16 without top layers
 base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
-# 🔒 Freeze early layers (feature extraction)
+# Freeze early layers (feature extraction)
 for layer in base_model.layers[:10]:
     layer.trainable = False
 
-# 🔓 Unfreeze deeper layers for fine-tuning
+#  Unfreeze deeper layers for fine-tuning
 for layer in base_model.layers[10:]:
     layer.trainable = True
 
