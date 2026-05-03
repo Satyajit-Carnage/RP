@@ -5,11 +5,11 @@ from tensorflow.keras import layers, models
 # Load pretrained ResNet50
 base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
-# 🔒 Freeze initial layers (low-level features)
+# Freeze initial layers (low-level features)
 for layer in base_model.layers[:100]:
     layer.trainable = False
 
-# 🔓 Unfreeze higher layers (deep features)
+#  Unfreeze higher layers (deep features)
 for layer in base_model.layers[100:]:
     layer.trainable = True
 
